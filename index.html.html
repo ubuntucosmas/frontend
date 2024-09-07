@@ -157,8 +157,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{% url 'login' %}">
-                            {% csrf_token %}
+                        <form method="POST" action="">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -171,7 +170,7 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                         </form>
-                        <div class="mb-3">
+                        <div class="mb-3 ">
                             <p>Login with Google</p>
     
                             <!-- Google Sign-In button -->
