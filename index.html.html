@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .google-signin-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Login with Google</h1>
+    
+    <!-- Google Sign-In button -->
+    <div id="g_id_onload"
+        data-client_id="959021472020-eo32kohbaor0ihmqu9e19t3iqb1f9spv.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse"
+        data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <script>
+        // Function to handle Google Sign-In response
+        function handleCredentialResponse(response) {
+            const idToken = response.credential;  // The ID token from Google
+
+            // Send the token to your Django backend
+            fetch('/api/google-login/', {  // Adjust to your Django API endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_token: idToken }),  // Send the ID token
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Login failed: ' + data.error);
+                } else {
+                    // Successfully logged in
+                    console.log('Success:', data);
+                    // Use the access token and refresh token as needed
+                    alert('Login successful!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Load Google Identity Services on page load
+        window.onload = function() {
+            google.accounts.id.initialize({
+                client_id: '959021472020-eo32kohbaor0ihmqu9e19t3iqb1f9spv.apps.googleusercontent.com',  // Replace with your Google OAuth Client ID
+                callback: handleCredentialResponse
+            });
+
+            google.accounts.id.renderButton(
+                document.querySelector(".g_id_signin"),
+                { theme: "outline", size: "large" }  // Customize button appearance
+            );
+        };
+    </script>
+
+</body>
+</html>
