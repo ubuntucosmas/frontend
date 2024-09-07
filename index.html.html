@@ -138,12 +138,14 @@
         </div>
     </nav>
 
-     <!-- Hero Section -->
+      <!-- Hero Section -->
     <section class="hero-section">
         <h1>Welcome to Indie Arts</h1>
         <p>Empowering Artists, Connecting Creators, Unleashing Innovation.</p>
             <!-- Trigger for the Login Modal -->
         <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+        <br>
+        <hr>
         <button>Get Started</button>
 
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -154,8 +156,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{% url 'login' %}">
-                            {% csrf_token %}
+                        <form method="POST" action="#">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -169,7 +170,15 @@
                             </div>
                         </form>
                         <div class="mb-3">
-
+                            <p>Login with Google</p>
+                            <!-- Google Sign-In button -->
+                            <div id="g_id_onload"
+                                data-client_id="959021472020-eo32kohbaor0ihmqu9e19t3iqb1f9spv.apps.googleusercontent.com"
+                                data-callback="handleCredentialResponse"
+                                data-auto_prompt="false">
+                            </div>
+                        
+                            <div class="g_id_signin" data-type="standard"></div>
                             
                         </div>
                     </div>
@@ -207,15 +216,7 @@
         <p>&copy; 2024 Indie Arts. All rights reserved.</p>
     </footer>
 
-                            <p>Login with Google</p>
-                            <!-- Google Sign-In button -->
-                            <div id="g_id_onload"
-                                data-client_id="959021472020-eo32kohbaor0ihmqu9e19t3iqb1f9spv.apps.googleusercontent.com"
-                                data-callback="handleCredentialResponse"
-                                data-auto_prompt="false">
-                            </div>
-                        
-                            <div class="g_id_signin" data-type="standard"></div>
+
 
 
     <script>
