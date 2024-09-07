@@ -31,7 +31,7 @@
             const idToken = response.credential;  // The ID token from Google
 
             // Send the token to your Django backend
-            fetch('/api/google-login/', {  // Adjust to your Django API endpoint
+            fetch('http://127.0.0.1:8000/dj-rest-auth/google/', {  // Adjust to your Django API endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
