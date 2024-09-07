@@ -35,7 +35,7 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id_token: id_token }),  // Send the ID token
+                body: JSON.stringify({ id_token: idToken }),  // Send the ID token
             })
             .then(response => response.json())
             .then(data => {
