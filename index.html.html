@@ -173,7 +173,7 @@
                             <p>Login with Google</p>
                             <!-- Google Sign-In button -->
                             <div id="g_id_onload"
-                                data-client_id="959021472020-eo32kohbaor0ihmqu9e19t3iqb1f9spv.apps.googleusercontent.com"
+                                data-client_id="364916409234-ntbad0p1drpl6es9g102m6618iqjalu6.apps.googleusercontent.com"
                                 data-callback="handleCredentialResponse"
                                 data-auto_prompt="false">
                             </div>
@@ -225,7 +225,7 @@
             const idToken = response.credential;  // The ID token from Google
 
             // Send the token to your Django backend
-            fetch('http://127.0.0.1:8000/dj-rest-auth/google/', {  // Adjust to your Django API endpoint
+            fetch('https://indie-userauth.onrender.com/dj-rest-auth/google/', {  // Adjust to your Django API endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -251,7 +251,7 @@
         // Load Google Identity Services on page load
         window.onload = function() {
             google.accounts.id.initialize({
-                client_id: '959021472020-eo32kohbaor0ihmqu9e19t3iqb1f9spv.apps.googleusercontent.com',  // Replace with your Google OAuth Client ID
+                client_id: '364916409234-ntbad0p1drpl6es9g102m6618iqjalu6.apps.googleusercontent.com',  // Replace with your Google OAuth Client ID
                 callback: handleCredentialResponse
             });
 
